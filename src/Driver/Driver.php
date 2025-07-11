@@ -17,8 +17,10 @@ abstract class Driver implements DriverInterface
         $this->event = $container->get(EventDispatcherInterface::class);
     }
 
-    public function getNext(string $key, int $startValue = 1, int $trial = 0, int $incr = 1)
+    public function getNext(string $key, int $startValue = 1000, int $trial = 0, int $incr = 1)
     {
-        // TODO: Implement getNext() method.
+        return $this->getNextCounter( $key, $startValue,  $trial , $incr);
     }
+
+    abstract protected function getNextCounter(string $key, int $startValue = 1000, int $trial = 0,int $incr = 1);
 }
