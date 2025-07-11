@@ -21,4 +21,17 @@ php bin/hyperf.php vendor:publish vartruexuan/hyperf-sequence-number
 
 ## 🛠 使用
 
-### 配置
+```php
+// 实际使用使用依赖注入
+$container = ApplicationContext::getContainer();
+$driver = $container->get(DriverInterface::class);
+
+// 直接获取计次编码
+$number = $driver->getNext('a');
+var_dump($number); // 1
+
+// 获取编码并填充指定长度
+$number = $driver->getNextAndPad('a');
+var_dump($number); // 0002
+
+```

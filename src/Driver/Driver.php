@@ -29,11 +29,28 @@ abstract class Driver implements DriverInterface
         }
     }
 
-    public function getNextAndPad(string $key, int $startValue = 1, int $trial = 0, int $incr = 1, string $padStr = '0', int $padLen = 4, int $padType = STR_PAD_LEFT): string
+    public function getNextAndPad(string $key, string $padStr = '0', int $padLen = 4, int $padType = STR_PAD_LEFT, int $startValue = 1, int $trial = 0, int $incr = 1): string
     {
         $nextVal = $this->getNext($key, $startValue, $trial, $incr);
         return str_pad(strval($nextVal), $padLen, $padStr, $padType);
     }
+
+    public function getNextKey(string $key, string $joinStr = '', int $startValue = 1, int $trial = 0, int $incr = 1): string
+    {
+        return implode($joinStr, [
+            $key,
+            $this->getNext($key, $startValue, $trial, $incr),
+        ]);
+    }
+
+    public function getNextKeyAndPad(string $key, string $padStr = '0', int $padLen = 4, int $padType = STR_PAD_LEFT, string $joinStr = '', int $startValue = 1, int $trial = 0, int $incr = 1): string
+    {
+        return implode($joinStr, [
+            $key,
+            $this->getNextAndPad($key, $startValue, $trial, $incr),
+        ]);
+    }
+
 
     abstract protected function getNextCounter(string $key, int $startValue = 1, int $incr = 1): int;
 }
