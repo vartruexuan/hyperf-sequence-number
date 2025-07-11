@@ -6,3 +6,16 @@
 
 # 概述
 hyperf 编码计次工具
+
+
+### 安装组件
+
+```shell
+composer require vartruexuan/hyperf-sequence-number
+```
+
+### 构建配置
+
+```shell
+php bin/hyperf.php vendor:publish vartruexuan/hyperf-sequence-number
+```

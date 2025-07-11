@@ -11,12 +11,15 @@ declare(strict_types=1);
  */
 namespace Vartruexuan\HyperfSequenceNumber;
 
+use Vartruexuan\HyperfSequenceNumber\Driver\DriverInterface;
+
 class ConfigProvider
 {
     public function __invoke(): array
     {
         return [
             'dependencies' => [
+                DriverInterface::class => SequenceNumberInvoker::class,
             ],
             'commands' => [
             ],
