@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vartruexuan\HyperfExcel\HyperfSequenceNumber;
+namespace Vartruexuan\HyperfSequenceNumber;
 
 use RuntimeException;
 class InvalidDriverException extends RuntimeException
