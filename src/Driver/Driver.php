@@ -47,10 +47,9 @@ abstract class Driver implements DriverInterface
     {
         return implode($joinStr, [
             $key,
-            $this->getNextAndPad($key, $startValue, $trial, $incr),
+            $this->getNextAndPad($key, $padStr, $padLen, $padType, $startValue, $trial, $incr),
         ]);
     }
-
-
+    
     abstract protected function getNextCounter(string $key, int $startValue = 1, int $incr = 1): int;
 }
