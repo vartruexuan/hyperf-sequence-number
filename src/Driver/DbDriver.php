@@ -25,7 +25,7 @@ class DbDriver extends Driver
     {
         return $this->model::query()->getConnection()->transaction(function () use ($key, $startValue, $incr, $trial) {
 
-            $currentNumber = $this->model::query()->lockForUpdate()->where('key', $key)->pluck('counter');
+            $currentNumber = $this->model::query()->lockForUpdate()->where('key', $key)->value('counter');
 
             if ($currentNumber <= 0) {
                 $this->model::query()->insert(['key' => $key, 'counter' => $startValue]);
