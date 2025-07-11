@@ -20,11 +20,11 @@ abstract class Driver implements DriverInterface
     public function getNext(string $key, int $startValue = 1, int $trial = 0, int $incr = 1): int
     {
         try {
-            return $this->getNextCounter($key, $startValue, $trial, $incr);
+            return $this->getNextCounter($key, $startValue, $incr);
         } catch (\Throwable $throwable) {
             // 重试
             if ($trial < 3) {
-                return $this->getNextCounter($key, $startValue, $trial + 1); //try again
+                return $this->getNextCounter($key, $startValue + 1); //try again
             }
         }
     }

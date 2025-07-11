@@ -21,9 +21,9 @@ class DbDriver extends Driver
         $this->model = $this->config['model'] ?? SequenceNumber::class;
     }
 
-    protected function getNextCounter(string $key, int $startValue = 1, int $trial = 0, int $incr = 1): int
+    protected function getNextCounter(string $key, int $startValue = 1, int $incr = 1): int
     {
-        return $this->model::query()->getConnection()->transaction(function () use ($key, $startValue, $incr, $trial) {
+        return $this->model::query()->getConnection()->transaction(function () use ($key, $startValue, $incr) {
 
             $currentNumber = $this->model::query()->lockForUpdate()->where('key', $key)->value('counter');
 
