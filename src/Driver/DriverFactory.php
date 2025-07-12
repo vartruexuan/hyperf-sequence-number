@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Vartruexuan\HyperfSequenceNumber\Driver;
 
+use Vartruexuan\HyperfSequenceNumber\Driver\Db\SequenceNumber;
 use Vartruexuan\HyperfSequenceNumber\Exception\InvalidDriverException;
 use Hyperf\Contract\ConfigInterface;
 use Psr\Container\ContainerInterface;
@@ -27,8 +28,13 @@ class DriverFactory
     {
         $config = $container->get(ConfigInterface::class);
 
-        $options = $config->get('excel.options');
-        $this->configs = $config->get('excel.drivers', []);
+        $options = $config->get('sequence_number.options');
+        $this->configs = $config->get('sequence_number.drivers', [
+            'db' => [
+                'driver' => DbDriver::class,
+                'model' => SequenceNumber::class
+            ],
+        ]);
 
         foreach ($this->configs as $key => $item) {
             $item = array_merge($options ?? [], $item);
