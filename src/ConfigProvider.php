@@ -30,6 +30,14 @@ class ConfigProvider
                     ],
                 ],
             ],
+            'publish' => [
+                [
+                    'id' => 'config',
+                    'description' => 'The config for excel.',
+                    'source' => __DIR__ . '/../publish/excel.php',
+                    'destination' => BASE_PATH . '/config/autoload/sequence_number.php',
+                ],
+            ],
         ];
     }
 }
