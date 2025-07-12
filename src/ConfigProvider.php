@@ -33,8 +33,8 @@ class ConfigProvider
             'publish' => [
                 [
                     'id' => 'config',
-                    'description' => 'The config for excel.',
-                    'source' => __DIR__ . '/../publish/excel.php',
+                    'description' => 'The config for sequence number.',
+                    'source' => __DIR__ . '/../publish/sequence_number.php',
                     'destination' => BASE_PATH . '/config/autoload/sequence_number.php',
                 ],
             ],
