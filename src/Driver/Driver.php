@@ -26,6 +26,7 @@ abstract class Driver implements DriverInterface
             if ($trial < 3) {
                 return $this->getNext($key, $startValue, $trial + 1, $incr); //try again
             }
+            throw $throwable;
         }
     }
 
