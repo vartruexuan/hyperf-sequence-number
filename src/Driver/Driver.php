@@ -24,7 +24,7 @@ abstract class Driver implements DriverInterface
         } catch (\Throwable $throwable) {
             // 重试
             if ($trial < 3) {
-                return $this->getNextCounter($key, $startValue + 1); //try again
+                return $this->getNext($key, $startValue, $trial + 1, $incr); //try again
             }
         }
     }
